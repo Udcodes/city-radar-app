@@ -1,0 +1,27 @@
+.textIcon {
+  /* padding: 10px; */
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex: 1.5;
+  cursor: pointer;
+
+  &:first-child {
+    margin-left: 0;
+  }
+
+  &:last-child {
+    margin-right: 0;
+  }
+}
+input {
+  &:focus-within {
+    border: 1px solid #0050c8;
+  }
+}
+.text-label {
+  text-align: left;
+  text-transform: inherit;
+  min-height: 16px;
+  white-space: nowrap;
+}
