@@ -3,21 +3,23 @@ import styled from 'styled-components';
 import Loader from '../Loader';
 import './style.scss';
 
-const AutocompleteContainer = styled.div`
-  margin: 15px 0;
-  height: fit-content;
-  display: grid;
+const AutocompleteWrapper = styled.div`
+  position: relative;
 `;
-const Input = styled.input`
+const AutocompleteInput = styled.input`
+  width: 100%;
+  outline: none;
   color: #5e6c84;
-  border: 1px solid #5e6c84;
-  padding: 12px 16px;
+  border: none;
+  border-bottom: 1px solid #5e6c84;
+  padding: 12px 0px 12px 0px;
   /* margin: 4px 0; */
   background-color: transparent;
-  display: grid
+  /* display: grid */
   /* width: 100%; */
   &:focus-within {
-    border: 1px solid #0050c8;
+    // border: 1px solid #0050c8;
+    border-bottom: 2px solid #0050c8;
   }
 `;
 
@@ -29,37 +31,48 @@ const Autocomplete = (props) => {
     placeholder,
     loading,
     suggestion,
-    onClick,
+    onItemSelected,
+    onKeyDown,
+    className,
+    showSuggestions,
+    activeSuggestion,
     ...inputProps
   } = props;
 
-  const renderSuggestions = (value, suggestion) => {
-    <>
-      {value && suggestion.length ? (
-        <ul className="suggestion-box">
-          {suggestion.map((item, index) => (
-            <li key={index} onClick={onClick}>
-              {item}
-            </li>
-          ))}
-        </ul>
-      ) : (
-        <div class="no-suggestions">
-          <p>No suggestions available.</p>
-        </div>
-      )}
-    </>;
-  };
+  let renderSuggestions;
+
+  if (showSuggestions && value) {
+    suggestion?.length
+      ? (renderSuggestions = (
+          <ul className="suggestion-box">
+            {suggestion.map((item, index) => (
+              <li
+                key={index}
+                role="button"
+                onClick={onItemSelected}
+                className={index === activeSuggestion ? 'suggestion-active' : ''}
+              >
+                {item}
+              </li>
+            ))}
+          </ul>
+        ))
+      : (renderSuggestions = (
+          <div className="no-suggestions">
+            <p>No suggestions available.</p>
+          </div>
+        ));
+  }
 
   return (
-    <>
-      <AutocompleteContainer>
-        {label && <span className="text-label">{label}</span>}
-        <Input
+    <React.Fragment>
+      <AutocompleteWrapper>
+        <AutocompleteInput
           value={value}
           type="text"
           onChange={onChange}
           placeholder={placeholder}
+          onKeyDown={onKeyDown}
           {...inputProps}
         />
         {loading && (
@@ -67,9 +80,9 @@ const Autocomplete = (props) => {
             <Loader />
           </div>
         )}
-        {renderSuggestions(value, suggestion)}
-      </AutocompleteContainer>
-    </>
+        {renderSuggestions}
+      </AutocompleteWrapper>
+    </React.Fragment>
   );
 };
 
