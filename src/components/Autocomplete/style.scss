@@ -1,66 +1,56 @@
-.textIcon {
-  /* padding: 10px; */
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  flex: 1.5;
+.icon {
   cursor: pointer;
-
-  &:first-child {
-    margin-left: 0;
-  }
-
-  &:last-child {
-    margin-right: 0;
-  }
+  position: absolute;
+  bottom: 4.5px;
+  right: 4.5px;
+}
+.suggest-wrapper {
+  position: relative;
 }
 .text-label {
   text-align: left;
   text-transform: inherit;
-  min-height: 16px;
+  // min-height: 16px;
   white-space: nowrap;
+  font-size: 18px;
+  font-weight: 600;
 }
-// @media screen and (min-width: 600px) {
-//   input {
-//     // width: 300px;
-//     width: 100%;
-//   }
-// }
-ul {
-  cursor: pointer;
-  text-align: left;
-  width: -webkit-fill-available;
-  position: absolute;
-  list-style: none;
-  background: green;
-  text-align: left;
-  padding: 4px 16px;
-  border-radius: 4px;
-}
+
 li {
-  &hover {
+  padding: 8px;
+  &:hover {
     background: blanchedalmond;
   }
 }
-.no-suggestions {
+.suggestion {
+  box-shadow: 0 2.8px 2.2px rgba(0, 0, 0, 0.034), 0 6.7px 5.3px rgba(0, 0, 0, 0.048),
+    0 12.5px 10px rgba(0, 0, 0, 0.06), 0 22.3px 17.9px rgba(0, 0, 0, 0.072),
+    0 41.8px 33.4px rgba(0, 0, 0, 0.086), 0 100px 80px rgba(0, 0, 0, 0.12);
   width: -webkit-fill-available;
-  position: absolute;
-  background: green;
-  text-align: left;
-  padding: 4px 16px;
-  border-radius: 4px;
-  margin-top: 1em;
+  margin-top: 0em;
   margin-bottom: 1em;
+  border: 4px;
+  outline: none;
+  cursor: pointer;
+  text-align: left;
+  position: absolute;
+  list-style: none;
+  background: white;
+  text-align: left;
+  padding: 0px;
+  border-radius: 4px;
+  z-index: 1;
+  &.no-suggestions {
+    padding: 8px;
+    background: whitesmoke;
+    overflow-wrap: anywhere;
+  }
 }
+
 .suggestion-active {
-  background: red;
+  border: 4px;
+  background: whitesmoke;
 }
-// .suggestion-box {
-//   position: absolute;
-//   list-style: none;
-//   background: green;
-//   text-align: left;
-//   li &:hover {
-//     background: blanchedalmond;
-//   }
-// }
+input:-webkit-autofill {
+  background-color: white !important;
+}

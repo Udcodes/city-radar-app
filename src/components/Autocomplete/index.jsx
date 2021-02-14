@@ -3,23 +3,31 @@ import styled from 'styled-components';
 import Loader from '../Loader';
 import './style.scss';
 
-const AutocompleteWrapper = styled.div`
-  position: relative;
-`;
+// const AutocompleteWrapper = styled.div`
+//   position: relative;
+// `;
 const AutocompleteInput = styled.input`
+  position: relative;
   width: 100%;
+  width: -webkit-fill-available;
+
   outline: none;
-  color: #5e6c84;
+  color: black;
   border: none;
-  border-bottom: 1px solid #5e6c84;
-  padding: 12px 0px 12px 0px;
+  border-bottom: 2px solid grey;
+  height: 40px;
+  font-size: 16px;
+  /* padding: 0px 8px 0px 8px; */
   /* margin: 4px 0; */
-  background-color: transparent;
   /* display: grid */
   /* width: 100%; */
+  border: 1px solid whitesmoke;
   &:focus-within {
-    // border: 1px solid #0050c8;
-    border-bottom: 2px solid #0050c8;
+    /* border: 1px solid #0050c8; */
+    border: 1px solid #0050c8;
+  }
+  &::placeholder {
+    font-size: 14px;
   }
 `;
 
@@ -44,11 +52,11 @@ const Autocomplete = (props) => {
   if (showSuggestions && value) {
     suggestion?.length
       ? (renderSuggestions = (
-          <ul className="suggestion-box">
+          <ul className="suggestion list">
             {suggestion.map((item, index) => (
               <li
                 key={index}
-                role="button"
+                role="presentation"
                 onClick={onItemSelected}
                 className={index === activeSuggestion ? 'suggestion-active' : ''}
               >
@@ -58,16 +66,18 @@ const Autocomplete = (props) => {
           </ul>
         ))
       : (renderSuggestions = (
-          <div className="no-suggestions">
-            <p>No suggestions available.</p>
+          <div className="suggestion no-suggestions">
+            <p>"{value}" not found, please try another keyword.</p>
           </div>
         ));
   }
 
   return (
     <React.Fragment>
-      <AutocompleteWrapper>
+      <div className="suggest-wrapper">
+        {label && <span className="text-label">{label}</span>}
         <AutocompleteInput
+          autocomplete="off"
           value={value}
           type="text"
           onChange={onChange}
@@ -75,13 +85,14 @@ const Autocomplete = (props) => {
           onKeyDown={onKeyDown}
           {...inputProps}
         />
-        {loading && (
-          <div className="textIcon">
-            <Loader />
+        {loading ? (
+          <div className="icon">
+            <Loader small />
           </div>
+        ) : (
+          renderSuggestions
         )}
-        {renderSuggestions}
-      </AutocompleteWrapper>
+      </div>
     </React.Fragment>
   );
 };

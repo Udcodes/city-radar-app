@@ -14,7 +14,7 @@ export const StyledButton = styled.button.attrs((props) => ({
   width: fit-content;
   color: #ffffff;
   transition: all 300ms ease-in-out;
-  margin-right: 5px;
+  /* margin-right: 5px; */
   width: fit-content;
   height: fit-content;
   cursor: pointer;

@@ -1,3 +1,10 @@
+* {
+  margin: 0;
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen', 'Ubuntu',
+    'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue', sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
 .App {
   /* display: flex; */
   /* display: grid; */
@@ -16,17 +23,23 @@
   display: grid;
   align-items: center;
   justify-content: center;
+  /* height: fit-content; */
   height: 100vh;
   /* width: 50%;
   margin: 0 auto; */
   padding: 0px 100px 0px 100px;
-  grid-template-columns: 1fr 0.2fr 1fr 0.2fr 0.5fr;
-  grid-template-rows: 0.5fr 0.5fr 0.5fr 0.5fr 0.5fr 1fr 2fr;
+  grid-template-columns: 1.5fr 0.2fr 0.5fr 1fr 1.5fr 0.2fr 0.5fr;
+  grid-template-rows: 2fr 0.5fr 0.5fr 0.5fr 0.5fr 0.5fr 1fr 2fr;
   grid-template-areas:
-    'title-text title-text title-text title-text title-text'
-    'left empty1 middle empty2 right'
-    'content content content content content';
+    'title-text title-text title-text title-text title-text title-text title-text'
+    'input1 space1 btn1 middle input2 space2 btn2'
+    'content content content content content content content';
   column-gap: 40px;
+  box-shadow: 0 2.8px 2.2px rgba(0, 0, 0, 0.034), 0 6.7px 5.3px rgba(0, 0, 0, 0.048),
+    0 12.5px 10px rgba(0, 0, 0, 0.06), 0 22.3px 17.9px rgba(0, 0, 0, 0.072),
+    0 41.8px 33.4px rgba(0, 0, 0, 0.086), 0 100px 80px rgba(0, 0, 0, 0.12);
+  /* box-shadow: 0 5px 20px hsl(0deg 0% 86% / 25%); */
+
   /* display: flex;
   flex-wrap: wrap;
   flex-direction: row;
@@ -39,17 +52,37 @@
   width: 100%; */
   grid-gap: 0.2rem;
 }
-.left {
-  grid-area: left;
+.input1 {
+  grid-area: input1;
   /* padding: 32px; */
   /* order: 1;
   background: red;
   flex-basis: 100%;
   height: 300px; */
 }
-
+.btn1 {
+  grid-area: btn1;
+  align-self: end;
+  /* padding: 32px; */
+  /* order: 1;
+  background: red;
+  flex-basis: 100%;
+  height: 300px; */
+}
+.space1 {
+  grid-area: space1;
+  /* padding: 32px; */
+  /* order: 1;
+  background: red;
+  flex-basis: 100%;
+  height: 300px; */
+}
 .middle {
   grid-area: middle;
+}
+
+.input2 {
+  grid-area: input2;
   /* padding: 32px; */
 
   /* order: 3;
@@ -58,19 +91,12 @@
   height: 300px;
   margin-bottom: 50px; */
 }
-.empty1 {
-  grid-area: empty1;
+.btn2 {
+  grid-area: btn2;
+  align-self: end;
 }
-.empty2 {
-  grid-area: empty2;
-}
-.right {
-  grid-area: right;
-
-  /* order: 2;
-  background: yellow;
-  flex-basis: 100%;
-  height: 300px; */
+.space2 {
+  grid-area: space2;
 }
 .content {
   grid-area: content;
@@ -90,31 +116,39 @@
 @media screen and (max-width: 600px) {
   .wrapper {
     grid-template-columns: 1fr;
-    grid-template-rows: 1fr 1fr 0.2fr 1fr 0.2fr 1.2fr 4fr;
+    grid-template-rows: 2fr 1.5fr 0.5fr 1fr 1fr 1.5fr 0.5fr 1fr 2fr;
     flex-wrap: nowrap;
     grid-template-areas:
       'title-text'
-      'left'
-      'empty1'
+      'input1'
+      'space1'
+      'btn1'
       'middle'
-      'empty2'
-      'right'
+      'input2'
+      'space2'
+      'btn2'
       'content';
   }
-  .left {
+  .input1 {
     width: 100%;
     flex-basis: 200px;
     order: 1;
   }
-  .middle {
+  .input2 {
     width: 100%;
     flex-basis: 1;
     order: 2;
   }
-  .right {
+  .btn1 {
+    align-self: end;
+  }
+  .btn2 {
+    align-self: end;
+  }
+  /* .right {
     flex-basis: 100px;
     order: 3;
-  }
+  } */
   .content {
     /* grid-area: content;
   align-self: flex-start; */
