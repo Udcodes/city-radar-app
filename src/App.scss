@@ -30,9 +30,10 @@ body {
   overflow-wrap: anywhere;
   display: grid;
   justify-content: center;
+  align-items: center;
   padding: 0px 185px 0px 185px;
   grid-template-columns: 2.5fr 0fr 2.5fr;
-  grid-template-rows: 2fr 2fr 2fr;
+  grid-template-rows: 1fr 1fr 4fr;
   grid-template-areas:
     'title-text title-text title-text'
     'form-one space2 form-two'
@@ -62,12 +63,11 @@ body {
   grid-area: content;
   justify-content: center;
   align-self: flex-start;
-  // padding: 30px;
+  padding: 20px;
   border-radius: 4px;
   background: rgb(250, 249, 249);
-  margin-top: 32px;
-  margin-bottom: 50px;
-  height: 400px;
+  margin-top: 20px;
+  margin-bottom: 20px;
 }
 .title-text {
   text-align: center;
