@@ -11,10 +11,11 @@ export const StyledButton = styled.button.attrs((props) => ({
   font-weight: 600;
   border-radius: 4px;
   padding: 14px 18px;
+  padding-top: 12px;
+  padding-bottom: 12px;
   width: fit-content;
   color: #ffffff;
   transition: all 300ms ease-in-out;
-  /* margin-right: 5px; */
   width: fit-content;
   height: fit-content;
   cursor: pointer;
@@ -58,27 +59,3 @@ export const StyledButton = styled.button.attrs((props) => ({
 `;
 
 export const Button = (props) => <StyledButton {...props} />;
-
-// Button.propTypes = {
-//   className: PropTypes.string,
-//   type: PropTypes.oneOf(['button', 'submit', 'reset']),
-//   bgColor: PropTypes.string,
-//   textColor: PropTypes.string,
-//   theme: PropTypes.string,
-//   fullWidth: PropTypes.bool,
-//   children: PropTypes.node,
-//   onClick: PropTypes.func,
-//   disabled: PropTypes.bool,
-// };
-
-// Button.defaultProps = {
-//   fullWidth: false,
-//   className: '',
-//   type: 'button',
-//   bgColor: '',
-//   textColor: '',
-//   theme: 'primary',
-//   children: <Fragment />,
-//   onClick: () => null,
-//   disabled: false,
-// };

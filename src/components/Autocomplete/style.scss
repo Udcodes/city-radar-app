@@ -6,20 +6,38 @@
 }
 .suggest-wrapper {
   position: relative;
+  margin-right: 10px;
 }
 .text-label {
   text-align: left;
-  text-transform: inherit;
-  // min-height: 16px;
-  white-space: nowrap;
   font-size: 18px;
   font-weight: 600;
+  margin-bottom: 10px !important;
 }
-
+.input-field {
+  position: relative;
+  width: 100%;
+  width: -webkit-fill-available;
+  outline: none;
+  color: black;
+  border: none;
+  height: 40px;
+  font-size: 16px;
+  border-radius: 4px;
+  padding-left: 8px;
+  border: 1px solid grey;
+  &:focus-within {
+    background: rgb(250, 249, 249);
+    border: 1px solid #ff7f50;
+  }
+  &::placeholder {
+    font-size: 14px;
+  }
+}
 li {
   padding: 8px;
   &:hover {
-    background: blanchedalmond;
+    background: #e5effd;
   }
 }
 .suggestion {
@@ -39,7 +57,14 @@ li {
   text-align: left;
   padding: 0px;
   border-radius: 4px;
-  z-index: 1;
+  z-index: 5;
+  color: black;
+  border-radius: 4px;
+  &.list {
+    max-height: 308px;
+    overflow-y: scroll;
+    scroll-behavior: smooth;
+  }
   &.no-suggestions {
     padding: 8px;
     background: whitesmoke;
@@ -49,8 +74,14 @@ li {
 
 .suggestion-active {
   border: 4px;
-  background: whitesmoke;
+  background: #e5effd;
 }
 input:-webkit-autofill {
   background-color: white !important;
+}
+input[type='search']::-webkit-search-decoration,
+input[type='search']::-webkit-search-cancel-button,
+input[type='search']::-webkit-search-results-button,
+input[type='search']::-webkit-search-results-decoration {
+  -webkit-appearance: none;
 }

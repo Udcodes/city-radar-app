@@ -1,41 +1,12 @@
 import React from 'react';
-import styled from 'styled-components';
 import Loader from '../Loader';
 import './style.scss';
 
-// const AutocompleteWrapper = styled.div`
-//   position: relative;
-// `;
-const AutocompleteInput = styled.input`
-  position: relative;
-  width: 100%;
-  width: -webkit-fill-available;
-
-  outline: none;
-  color: black;
-  border: none;
-  border-bottom: 2px solid grey;
-  height: 40px;
-  font-size: 16px;
-  /* padding: 0px 8px 0px 8px; */
-  /* margin: 4px 0; */
-  /* display: grid */
-  /* width: 100%; */
-  border: 1px solid whitesmoke;
-  &:focus-within {
-    /* border: 1px solid #0050c8; */
-    border: 1px solid #0050c8;
-  }
-  &::placeholder {
-    font-size: 14px;
-  }
-`;
-
-const Autocomplete = (props) => {
+const AutocompleteComponent = (props) => {
   const {
     label,
     value,
-    onChange,
+    fetchSuggestions,
     placeholder,
     loading,
     suggestion,
@@ -43,22 +14,24 @@ const Autocomplete = (props) => {
     onKeyDown,
     className,
     showSuggestions,
-    activeSuggestion,
+    activeItemIndex,
+    menuRef,
     ...inputProps
   } = props;
 
   let renderSuggestions;
-
   if (showSuggestions && value) {
     suggestion?.length
       ? (renderSuggestions = (
-          <ul className="suggestion list">
+          <ul className="suggestion list" ref={menuRef}>
             {suggestion.map((item, index) => (
               <li
-                key={index}
+                key={item}
                 role="presentation"
-                onClick={onItemSelected}
-                className={index === activeSuggestion ? 'suggestion-active' : ''}
+                onClick={() => {
+                  onItemSelected(item);
+                }}
+                className={index === activeItemIndex ? 'suggestion-active' : ''}
               >
                 {item}
               </li>
@@ -66,7 +39,7 @@ const Autocomplete = (props) => {
           </ul>
         ))
       : (renderSuggestions = (
-          <div className="suggestion no-suggestions">
+          <div className="suggestion no-suggestions" ref={menuRef}>
             <p>"{value}" not found, please try another keyword.</p>
           </div>
         ));
@@ -74,13 +47,14 @@ const Autocomplete = (props) => {
 
   return (
     <React.Fragment>
-      <div className="suggest-wrapper">
+      <div className={`suggest-wrapper ${className}`}>
         {label && <span className="text-label">{label}</span>}
-        <AutocompleteInput
+        <input
           autocomplete="off"
+          className="input-field "
           value={value}
-          type="text"
-          onChange={onChange}
+          type="search"
+          onChange={fetchSuggestions}
           placeholder={placeholder}
           onKeyDown={onKeyDown}
           {...inputProps}
@@ -97,4 +71,4 @@ const Autocomplete = (props) => {
   );
 };
 
-export default Autocomplete;
+export default AutocompleteComponent;
