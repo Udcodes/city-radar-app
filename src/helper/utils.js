@@ -59,15 +59,15 @@ export const useClickOutside = (outsideClick) => {
   return { menuRef };
 };
 
-export const errorState = (error1, error2) => {
-  let errors = error1 && error2;
+export const errorState = (firstRequestError, secondRequestError) => {
+  let errors = firstRequestError && secondRequestError;
   if (errors) {
     return <p className="error-message">No data-set was returned for both entries.</p>;
   }
-  if (error1) {
+  if (firstRequestError) {
     return <p className="error-message">No data-set was returned for your first entry.</p>;
   }
-  if (error2) {
+  if (secondRequestError) {
     return <p className="error-message">No data-set was returned for your second entry.</p>;
   }
 };

@@ -13,6 +13,7 @@ export const StyledButton = styled.button.attrs((props) => ({
   padding: 14px 18px;
   padding-top: 12px;
   padding-bottom: 12px;
+  /* width: 132px; */
   width: fit-content;
   color: #ffffff;
   transition: all 300ms ease-in-out;
@@ -25,6 +26,7 @@ export const StyledButton = styled.button.attrs((props) => ({
   }
 
   &:disabled {
+    width: 132px;
     cursor: not-allowed;
     opacity: 0.6;
   }
