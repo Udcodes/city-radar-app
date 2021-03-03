@@ -32,11 +32,11 @@ body {
   justify-content: center;
   align-items: center;
   padding: 0px 185px 0px 185px;
-  grid-template-columns: 3fr 0.2fr 3fr 0.5fr 2.5fr 0.2fr;
+  grid-template-columns: 3fr 0.2fr 3fr 0.5fr 2.5fr;
   grid-template-rows: 1fr 1.5fr 4fr;
   grid-template-areas:
     'title-text title-text title-text title-text title-text title-text'
-    'input1 space1 input2 space2 btn space3'
+    'input1 space1 input2 space2 btn btn'
     'content content content content content content';
   box-shadow: 0 2.8px 2.2px rgba(0, 0, 0, 0.034), 0 6.7px 5.3px rgba(0, 0, 0, 0.048),
     0 12.5px 10px rgba(0, 0, 0, 0.06), 0 22.3px 17.9px rgba(0, 0, 0, 0.072),
@@ -46,17 +46,6 @@ body {
     background: black;
   }
 }
-// .form-one {
-//   display: flex;
-//   position: relative;
-//   align-items: flex-end;
-// }
-// .form-two {
-//   position: relative;
-//   display: flex;
-//   align-items: flex-end;
-//   justify-content: flex-end;
-// }
 .input1 {
   grid-area: input1;
 }
@@ -133,21 +122,12 @@ body {
       'btn btn btn'
       'content content content';
   }
-  // .input1 {
-  //   width: 60%;
-  // }
-  // .input2 {
-  //   width: 60%;
-  // }
+  .input2 {
+    margin: 0 !important;
+  }
   .btn {
     width: 100% !important;
   }
-  // .form-one {
-  //   width: 100%;
-  // }
-  // .form-two {
-  //   width: 100%;
-  // }
 }
 @media screen and (max-width: 600px) {
   .wrapper {

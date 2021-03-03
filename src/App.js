@@ -197,7 +197,7 @@ const App = () => {
       }}
     >
       <form autocomplete="off" onSubmit={getCityMetrics} className="wrapper">
-        <h1 className="title-text">City Radar Chart App</h1>
+        <h1 className="title-text">City Radar App</h1>
         <AutocompleteComponent
           className="input1"
           label="Enter first city"
@@ -252,7 +252,7 @@ const App = () => {
           ) : errorForFirstRequest && errorForSecondRequest ? (
             <div className="empty-state">
               <EmptyState />
-              Your Radar chart will show up here.
+              Your radar chart will show up here.
             </div>
           ) : (
             <Plot

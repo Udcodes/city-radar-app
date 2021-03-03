@@ -26,7 +26,7 @@ export const StyledButton = styled.button.attrs((props) => ({
   }
 
   &:disabled {
-    width: 132px;
+    /* width: 132px; */
     cursor: not-allowed;
     opacity: 0.6;
   }
